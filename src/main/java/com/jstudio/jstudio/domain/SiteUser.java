@@ -17,11 +17,17 @@ public class SiteUser {
     @Column(name = "site_user_id")
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String email;
+    @Column(columnDefinition="text")
     private String picture;
+    @Column(nullable = false)
     private String nickName;
+    @Column(nullable = false)
     private String loginId;
+    @Column(nullable = false)
     private String password;
 
     @ManyToMany

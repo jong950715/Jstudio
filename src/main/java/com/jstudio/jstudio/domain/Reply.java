@@ -10,17 +10,20 @@ public class Reply {
 
     @Id
     @GeneratedValue
+    @Column(name = "reply_id")
     Long id;
 
     @ManyToOne
-    @JoinColumn(name = "board_user_id")
+    @JoinColumn(name = "board_user_id", nullable = false)
     private BoardUser boardUser;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
+    @Column(nullable = false, columnDefinition = "text")
     private String content;
+    @Column(nullable = false)
     private LocalDateTime date;
 
     @ManyToOne
@@ -31,8 +34,9 @@ public class Reply {
     private List<Reply> children = new ArrayList<>();
 
     private int depth;
-    private int order;
+    private int position;
 
     //not on DB
+    @Transient
     private int numDescendant;
 }

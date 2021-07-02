@@ -10,19 +10,24 @@ public class Post {
 
     @Id
     @GeneratedValue
+    @Column(name = "post_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "board_user_id")
+    @JoinColumn(name = "board_user_id", nullable = false)
     private BoardUser boardUser;
 
     @ManyToOne
-    @JoinColumn(name = "board_id")
+    @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false, columnDefinition = "text")
     private String content;
+    @Column(columnDefinition="text")
     private String picture;
+    @Column(nullable = false)
     private LocalDateTime date;
 
     @ManyToMany
@@ -39,6 +44,5 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     List<Reply> replies = new ArrayList<>();
-
 
 }

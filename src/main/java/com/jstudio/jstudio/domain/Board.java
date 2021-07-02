@@ -8,9 +8,12 @@ import java.util.List;
 public class Board {
     @Id
     @GeneratedValue
+    @Column(name = "board_id")
     private Long id;
 
+    @Column(nullable = false)
     private String title;
+    @Column(columnDefinition="text")
     private String picture;
 
     @ManyToOne

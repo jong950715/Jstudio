@@ -9,6 +9,7 @@ public class Role {
 
     @Id
     @GeneratedValue
+    @Column(name = "role_id")
     private Long id;
 
     private String name; // role name must start with ROLE_
